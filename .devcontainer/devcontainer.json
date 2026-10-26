@@ -1,0 +1,76 @@
+{
+  "name": "infrastructure",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "installOhMyZsh": true,
+      "upgradePackages": false
+    },
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/terraform:1": {
+      "version": "1.16.1"
+    },
+    "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {
+      "kubectl": "latest",
+      "helm": "latest",
+      "minikube": "none"
+    },
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {},
+    "ghcr.io/devcontainers-extra/features/zsh-plugins:0": {
+      "plugins": "zsh-autosuggestions",
+      "omzPlugins": "https://github.com/zsh-users/zsh-autosuggestions.git"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "christian-kohler.npm-intellisense",
+        "hashicorp.terraform",
+        "ms-vscode.vscode-json",
+        "christian-kohler.path-intellisense",
+        "marxism.ai-token-count",
+        "tamasfe.even-better-toml",
+        "github.vscode-github-actions",
+        "bierner.markdown-mermaid",
+        "redhat.vscode-yaml",
+        "bierner.color-info",
+        "GitHub.github-vscode-theme",
+        "GitHub.codespaces",
+        "ms-vscode-remote.remote-containers",
+        "mutantdino.resourcemonitor",
+        "GitHub.remotehub",
+        "GitHub.vscode-pull-request-github",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "github.copilot.chat.commitMessageGeneration.instructions": [
+          {
+            "text": "Use the Conventional Commits format: `<type>(<scope>): <subject>`."
+          },
+          {
+            "text": "Derive the scope from the actual files changed: use the primary module, feature area, or directory name (e.g., `auth`, `components/nav`, `lib/utils`, `terraform/gcp`). If changes span multiple areas, use the most significant one or omit the scope."
+          },
+          {
+            "text": "Allowed types: feat, fix, chore, docs, style, refactor, perf, test."
+          },
+          {
+            "text": "Subject must be imperative mood, no period at the end, under 50 chars if possible."
+          }
+        ],
+      }
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "remoteUser": "vscode"
+}
